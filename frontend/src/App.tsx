@@ -5,6 +5,7 @@ import LoginPage from './pages/auth/LoginPage'
 import SignUpPage from './pages/auth/SignUpPage'
 import AppLayout from './components/layout/AppLayout'
 import PolicyManagement from './pages/admin/PolicyManagement'
+import UserManagement from './pages/admin/UserManagement'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route element={<AppLayout />}>
             <Route path='/admin' >
               <Route path='policy' element={<PolicyManagement />}/>
-              <Route path='user' element={<p>Admin user management dashboard</p>}/>
+              <Route path='user' element={<UserManagement />}/>
             </Route>
             <Route path='/policy' element={<PolicyManagement />}/>
           </Route>

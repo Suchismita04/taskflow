@@ -19,7 +19,7 @@ import {
 export const AppSidebar: React.FC = () => {
     const location = useLocation();
     const menuItems = [
-        { name: 'Admin Dashboard', uri: '/admin', icon: LayoutDashboard, disabled: true },
+        // { name: 'Admin Dashboard', uri: '/admin', icon: LayoutDashboard, disabled: true },
         { name: 'Policy Management', uri: '/admin/policy', icon: ShieldCheck },
         { name: 'User Management', uri: '/admin/user', icon: UsersRound },
     ];
@@ -51,7 +51,7 @@ export const AppSidebar: React.FC = () => {
 
                         return (
                             <SidebarMenuItem key={item.name}>
-                                {item.disabled ? (
+                                {/*  {item.disabled ? (
                                     <SidebarMenuButton
                                         size="sm"
                                         className="min-h-16 gap-3 rounded-none px-3 py-3 text-[#505050] hover:bg-transparent hover:text-[#505050]"
@@ -67,7 +67,15 @@ export const AppSidebar: React.FC = () => {
                                     >
                                         {content}
                                     </SidebarMenuButton>
-                                )}
+                                )} */}
+                                <SidebarMenuButton
+                                    size="sm"
+                                    isActive={isActive}
+                                    render={<Link to={item.uri} />}
+                                    className="min-h-16 gap-3 rounded-2xl px-3 py-3 text-[#505050] hover:bg-[#e6e6e6] hover:text-black data-active:bg-black data-active:text-white data-active:hover:bg-black data-active:hover:text-white"
+                                >
+                                    {content}
+                                </SidebarMenuButton>
                             </SidebarMenuItem>
                         );
                     })}
