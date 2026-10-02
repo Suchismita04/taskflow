@@ -1,10 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import {
+    AlertTriangle,
+    BarChart3,
     FileText,
     Headphones,
-    LayoutDashboard,
+    KanbanSquare,
+    ListTodo,
     ShieldCheck,
     UsersRound,
+    Zap,
 } from "lucide-react";
 import {
     Sidebar,
@@ -19,17 +23,22 @@ import {
 export const AppSidebar: React.FC = () => {
     const location = useLocation();
     const menuItems = [
-        // { name: 'Admin Dashboard', uri: '/admin', icon: LayoutDashboard, disabled: true },
+        { name: 'Kanban Board', uri: '/kanban', icon: KanbanSquare },
+        { name: 'Backlog', uri: '/kanban?view=backlog', icon: ListTodo },
+        { name: 'Sprints', uri: '/kanban?view=sprints', icon: Zap },
+        { name: 'Task Allocation', uri: '/kanban?view=allocation', icon: UsersRound },
+        { name: 'Bug Tracking', uri: '/kanban?view=bugs', icon: AlertTriangle },
+        { name: 'Reports', uri: '/kanban?view=reports', icon: BarChart3 },
         { name: 'Policy Management', uri: '/admin/policy', icon: ShieldCheck },
         { name: 'User Management', uri: '/admin/user', icon: UsersRound },
     ];
 
     return (
-        <Sidebar className="border-r border-[#d3d3d3] bg-[#f7f7f7] text-[#4d4d4d]" collapsible="offcanvas">
-            <SidebarHeader className="px-4 pb-0 pt-18">
+        <Sidebar className="border-r border-slate-200 bg-white text-slate-600" collapsible="offcanvas">
+            <SidebarHeader className="px-4 pb-0 pt-8">
                 <div className="space-y-1">
-                    <p className="text-[1.12rem] font-bold leading-tight tracking-[-0.04em] text-black">Admin Center</p>
-                    <p className="text-[1.12rem] font-normal leading-tight tracking-[-0.04em] text-[#555]">System Control</p>
+                    <p className="text-lg font-bold leading-tight tracking-tight text-slate-900">Project Hub</p>
+                    <p className="flex items-center gap-2 text-sm text-slate-500"><span className="size-2 rounded-full bg-emerald-500" />Sprint 24 (Active)</p>
                 </div>
             </SidebarHeader>
 
@@ -72,7 +81,7 @@ export const AppSidebar: React.FC = () => {
                                     size="sm"
                                     isActive={isActive}
                                     render={<Link to={item.uri} />}
-                                    className="min-h-16 gap-3 rounded-2xl px-3 py-3 text-[#505050] hover:bg-[#e6e6e6] hover:text-black data-active:bg-black data-active:text-white data-active:hover:bg-black data-active:hover:text-white"
+                                    className="min-h-12 gap-3 rounded-xl px-3 py-3 text-slate-600 hover:bg-slate-100 hover:text-slate-950 data-active:bg-slate-950 data-active:text-white data-active:hover:bg-slate-950 data-active:hover:text-white"
                                 >
                                     {content}
                                 </SidebarMenuButton>
