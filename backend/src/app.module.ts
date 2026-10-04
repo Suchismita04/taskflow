@@ -27,10 +27,11 @@ import resolveDbType from './common/utils/db-type-resolver.util';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
         options: {
-          trustServerCertificate: resolveEnvPath().includes(`.env.${process.env.APP_ENV ?? 'local'}`),
+          encrypt:true,
+          trustServerCertificate: true, //resolveEnvPath().includes(`.env.${process.env.APP_ENV ?? 'local'}`)
         },
         autoLoadEntities: true,
-        synchronize: configService.get<string>('DB_NAME') == 'YES' ? true : false
+        synchronize: configService.get<string>('DB_SYNC') === 'YES' ? true : false
       }),
     })
   ],
